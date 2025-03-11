@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            compResult = Math.random()
+             
+                if (compResult <= 0.33) {compAnswer = "rock"}
+                else if (compResult <= 0.66) {compAnswer = "paper"}
+                else {compAnswer = "scissors"}
+            
+            return compAnswer
+        }
+
+        function getHumanChoice() {
+            userInput = prompt("Enter your choice: ")
+            return userInput.toLowerCase()
+        }
+
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanChoice === "rock" && computerChoice === "paper") {outcome = "You lose! Paper beats Rock!"; computerScore++;}
+            else if (humanChoice === "rock" && computerChoice === "scissors") {outcome = "You win! Rock beats Scissors!"; humanScore++;}
+            else if (humanChoice === "paper" && computerChoice === "scissors") {outcome = "You lose! Scissors beats Paper!"; computerScore++;}
+            else if (humanChoice === "paper" && computerChoice === "rock") {outcome = "You win! Paper beats Rock!"; humanScore++;}
+            else if (humanChoice === "scissors" && computerChoice === "rock") {outcome = "You lose! Rock beats Scissors!"; computerScore++;}
+            else if (humanChoice === "scissors" && computerChoice === "paper") {outcome = "You win! Scissors beats Paper!"; humanScore++;}
+            else {outcome = "Draw!";}
+            return outcome;
+        }
+
+        
+        for (i = 1; i<= 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+                     
+        console.log("Computer Choice: "+computerSelection);
+        console.log(playRound(humanSelection, computerSelection));
+        console.log("Human score: "+humanScore);
+        console.log("Computer score: "+computerScore);
+        }
+        
+    </script>
+    
+</body>
+</html>
